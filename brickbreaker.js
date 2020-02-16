@@ -170,7 +170,7 @@ function collisonDetection()
 			{
 				if(x>b.x && x< b.x+brickW && y>b.y && y< b.y+brickH )
 				{
-					PlaySoundWav("beep1");	//hitting a brick
+					PlaySoundWav("brick1");	//hitting a brick
 					dy=-dy;
 					b.status=0;
 					++score;
