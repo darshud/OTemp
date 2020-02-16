@@ -10,33 +10,21 @@ function PlaySound(soundObj) {
   audio.play();
 }
 
-document.getElementById("start").onclick = function(){
+
 
 var canvas=document.getElementById("BBcanvas");
 var ctx=canvas.getContext("2d");
 
-document.getElementById("BBcanvas").onclick = function(){
-	alert("Paused");
-}
+//document.getElementById("BBcanvas").onclick = function(){
+//	alert("Paused");
+//}
 
 document.getElementById("pause").style.display = "inline";
 document.getElementById("pause").onclick = function(){
 	alert("Paused");
 }
 
-if(document.getElementById("start").textContent == "Reset"){
-	document.location.reload();
-}
 
-document.getElementById("start").textContent = "Reset";
-
-for(let i = 0; i < buttons.length; i++){
-	if(buttons[i].checked == true){
-		complexity = buttons[i].value;
-	}
-	buttons[i].disabled = true;
-}
-console.log(complexity);
 
 var x=canvas.width/2;
 var y=canvas.height-30;
@@ -52,7 +40,7 @@ var paddleX=(canvas.width-paddleW)/2;
 var RKeyPressed=false;
 var LKeyPressed=false;
 var brickRCnt=5;
-var brickColCnt=4;
+var brickColCnt=6;
 var brickW=100;
 var brickH=20;
 var brickPadding=10;
@@ -60,7 +48,7 @@ var brickOffSetTop=30;
 var brickOffSetLeft=30;
 var score=0;
 var lives=3;
-var speed=-1;
+var speed=0;
 var speed_increment=1.3;
 var colors = ["#0095DD", "#0095DD", "#8BFF06", "#EDFD08", "#08FDED", "#FD08D4", "#FDBC08"];
 
@@ -70,10 +58,15 @@ for(let c=0;c<brickColCnt;c++)
 	bricks[c]=[];
 	for(let r=0;r<brickRCnt;r++)
 	{
-		bricks[c][r]={x:0,y:0,status:1,color:colors[getRandomInt(6) + 1]};
+		bricks[c][r]={x:0,y:0,status:1,color:colors[getRandomInt(6) + 1], special:""};
 	}
 }
-
+for(let i = 1; i < 5; i++){
+	do{
+		var chosenbrick = bricks[getRandomInt(brickColCnt)][getRandomInt(brickRCnt)];
+	}while(chosenbrick.special != 0);
+	chosenbrick.special = i + "";
+}
 document.addEventListener("keydown",keyDownHandler);
 document.addEventListener("keyup",keyUpHandler);
 
@@ -110,6 +103,8 @@ function drawBricks()
 			ctx.strokeStyle='rgba(0,0,0,0.5)';
 			ctx.fill();
 			ctx.stroke();
+			ctx.fillStyle = "#000000";
+			ctx.fillText(bricks[c][r].special,brickX + brickW/2, brickY + brickH/2);
 			ctx.closePath();
 			}
 
@@ -117,7 +112,6 @@ function drawBricks()
 	}
 }
 function keyDownHandler(e){
-	ctx.fillText("D-Key:"+e.keyCode,100,20);
 	if(e.keyCode==39)
 	{
 		RKeyPressed=true;
@@ -130,7 +124,6 @@ function keyDownHandler(e){
 }
 
 function keyUpHandler(e){
-	ctx.fillText("U-Key:"+e.keyCode,100,20);
 	if(e.keyCode==39)
 	{
 		RKeyPressed=false;
@@ -216,7 +209,7 @@ function draw()
 	if(y+dy < ballSize){
 		dy=-dy;
 	}
-	else if(y+dy > canvas.height-2*ballSize)
+	else if(y+dy > canvas.height-ballSize)
 	{
 
 		if(x>paddleX && x<paddleX +paddleW)
@@ -257,8 +250,25 @@ function draw()
 	speed = Math.ceil(complexity*10*speed_increment**(3-lives));
 
 }
+draw();
+document.getElementById("start").onclick = function(){
+if(document.getElementById("start").textContent == "Reset"){
+	document.location.reload();
+}
 
+document.getElementById("start").textContent = "Reset";
+
+for(let i = 0; i < buttons.length; i++){
+	if(buttons[i].checked == true){
+		complexity = buttons[i].value;
+	}
+	buttons[i].disabled = true;
+}
+ballSize=30/complexity;
+paddleW=210/complexity;
+console.log(complexity);
 setInterval(draw,10);
+
 }
 
 }
