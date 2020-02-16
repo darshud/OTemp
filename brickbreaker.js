@@ -1,18 +1,23 @@
 
 window.onload = function(){
 
-PlaySound("start1");	//game start
+var start_flag = true;
+
+PlaySoundWav("start1");	//game start
 
 var complexity = 4;
 var buttons = document.getElementsByName("complexity");
 buttons[2].checked = true;
 
-function PlaySound(soundObj) {
+function PlaySoundWav(soundObj) {
   var audio = new Audio(soundObj + '.wav');
   audio.play();
 }
 
-
+function PlaySoundMp3(soundObj) {
+  var audio = new Audio(soundObj + '.mp3');
+  audio.play();
+}
 
 var canvas=document.getElementById("BBcanvas");
 var ctx=canvas.getContext("2d");
@@ -165,15 +170,14 @@ function collisonDetection()
 			{
 				if(x>b.x && x< b.x+brickW && y>b.y && y< b.y+brickH )
 				{
-					PlaySound("beep1");	//hitting a brick
+					PlaySoundWav("beep1");	//hitting a brick
 					dy=-dy;
 					b.status=0;
 					++score;
 					if(brickColCnt*brickRCnt==score)
 					{
-						PlaySound("win1");	//winning
-						alert("YOU WIN");
-						document.location.reload();
+						PlaySoundWav("win1");	//winning
+						window.setTimeout(function(){alert("YOU WIN!"); document.location.reload();},300);
 					}
 
 				}
@@ -194,6 +198,9 @@ function drawLives()
 {
 	ctx.font="16px Arial";
 	ctx.fillStyle="#0095DD";
+	if(lives < 0){
+		lives = 0;
+	}
 	ctx.fillText("Lives:"+lives,canvas.width-65,20);
 	ctx.fillText("Speed:"+speed,100,20);
 }
@@ -216,16 +223,17 @@ function draw()
 
 		if(x>paddleX && x<paddleX +paddleW)
 		{
-			PlaySound("paddle1");	//hitting paddle
+			PlaySoundWav("paddle1");	//hitting paddle
 			dy=-dy;
 		}
 		else{
-			PlaySound("lifeLess1");	//losing life
+			PlaySoundWav("lifeLess1");	//losing life
 			lives=lives-1;
 			if(!lives)    
 			{
-			PlaySound("win1");	//game over
-			window.setTimeout(function(){alert("GAME OVER"); document.location.reload();},300);
+			PlaySoundMp3("lose1");	//game over
+			window.setTimeout(function(){alert("GAME OVER!"); document.location.reload();},300);
+
 			}
 			else
 			{
@@ -236,7 +244,7 @@ function draw()
 	}
 
 	if((x+dx < ballSize|| (x+dx > canvas.width-ballSize)) ){
-PlaySound("wall1");	//hitting sidewall
+	PlaySoundWav("wall1");	//hitting sidewall
 			dx=-dx;
 	}
 	if(RKeyPressed && paddleX <canvas.width-paddleW)
@@ -249,9 +257,18 @@ PlaySound("wall1");	//hitting sidewall
 	x += complexity*dx/2;
 	y += complexity*dy/2;
 
-	speed = Math.ceil(complexity*10*speed_increment**(3-lives));
+	var temp_speed = speed;
+	temp_speed = Math.ceil(complexity*10*speed_increment**(3-lives));
+	if (speed != temp_speed) { 
+		if ((!start_flag) && (lives > 0)) {
+			PlaySoundWav("speed1");	//speed increase
+		}
+	}
+	speed = temp_speed; 	
 
+start_flag = false;
 }
+
 draw();
 document.getElementById("start").onclick = function(){
 if(document.getElementById("start").textContent == "Reset"){
