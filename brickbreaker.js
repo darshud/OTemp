@@ -1,6 +1,8 @@
 
 window.onload = function(){
 
+window.addEventListener("deviceorientation", this.handleOrientation, true);
+
 var start_flag = true;
 
 PlaySoundWav("start1");	//game start
@@ -78,6 +80,17 @@ var rComplexity = ["Baby", "Easy", "Medium", "Hard", "Pro", "Crazy", "Death"]
 var totalPossibleScore = 0;
 var minusLifeCount = 0;
 var bricks=[];
+
+handleOrientation: function(e) 
+{
+    var x = e.gamma;
+    var y = e.beta;
+
+	alert(x);
+
+//    Ball._player.body.velocity.x += x;
+//    Ball._player.body.velocity.y += y;
+}
 
 for(let c=0;c<brickColCnt;c++)
 {
