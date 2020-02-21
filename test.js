@@ -1,12 +1,14 @@
 function deviceOrientationHandler(e){
 
-  var a = document.getElementById('alpha');
-  var b = document.getElementById('beta');
-  var g = document.getElementById('gamma');
+alert(2);
 
-  a.innerText = e.alpha;
-  b.innerText = e.beta;
-  g.innerText = e.gamma;
+//  var a = document.getElementById('alpha');
+ // var b = document.getElementById('beta');
+  //var g = document.getElementById('gamma');
+
+//  a.innerText = e.alpha;
+ // b.innerText = e.beta;
+  //g.innerText = e.gamma;
 }
 
 if (window.DeviceOrientationEvent) {
