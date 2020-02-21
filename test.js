@@ -10,10 +10,10 @@ function deviceOrientationHandler(e){
 }
 
 if (window.DeviceOrientationEvent) {
-
+  alert(0);
   window.addEventListener('deviceorientation', deviceOrientationHandler, false);
 
 }else{
-
+  alert(1);
   console.error('Device orientation not supported in this browser.');
 }
