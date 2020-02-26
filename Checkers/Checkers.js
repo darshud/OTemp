@@ -835,13 +835,17 @@ function resetCheckersColor() {
 
 		if ((row % 2) == 0) {
 			if ((i % 2) == 0) {
-				c.style.backgroundColor = "#FFEB3B";
+				c.setAttribute("class", "yellow");
 			}
+			else
+				c.setAttribute("class", "red");
 		}
 		else if ((row % 2) == 1) {
 			if ((i % 2) == 1) {
-				c.style.backgroundColor = "#FFEB3B";
+				c.setAttribute("class", "yellow");
 			}
+			else
+				c.setAttribute("class", "red");
 		}
 
 		i++;
