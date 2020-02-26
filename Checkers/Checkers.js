@@ -127,7 +127,9 @@ function Checkers(vPlyr1, vPlyr2, vTimePerMoveSec = 0, vIsAIPlay = 0) {
     	this.isTimedGame = 1;
     	this.timePerMoveSec = vTimePerMoveSec;
     }
+
     this.isAIPlay = vIsAIPlay;
+    this.isPowerfulKing = false;
 }
 
 Checkers.prototype.resetLastMessages = function() {
@@ -152,6 +154,14 @@ Checkers.prototype.resetCounters = function() {
     this.settotalMoves_Player2(0);
     this.settotalTimeUsed_Player1(0);
     this.settotalTimeUsed_Player2(0);
+};
+
+Checkers.prototype.setisPowerfulKing = function(val) {
+    this.isPowerfulKing = val;
+};
+
+Checkers.prototype.getisPowerfulKing = function() {
+    return this.isPowerfulKing;
 };
 
 Checkers.prototype.getisTimedGame = function() {
@@ -407,7 +417,8 @@ Checkers.prototype.promotePawnToKing_IfApplicable = function(currBox) {
         	return false;
 	    }
    
-		//pawn.setMaxStep(this.boardSize);
+		if (this.isPowerfulKing)
+			pawn.setMaxStep(this.boardSize);
    	 	pawn.setType('king');
 	   	this.setwasLastMove_PromotedPawn(1);
     		PlaySoundWav("king");
@@ -521,7 +532,7 @@ Checkers.prototype.isValidMove
     }
 
     if(pawn.getType() !== 'king') {
-        if(pawn.getPlayer() == this.firstTurnPlayer) {
+        if(pawn.getPlayer() == this.plyr1) {
             if(currBox.getR() > destBox.getR()) {
         	this.setlastOperationMsg("Can't move back"); 
                 return false;
@@ -675,29 +686,45 @@ var toC;
 var clickDestCellFlag = true;	//to manage additional move by the same pawn after eating
 var PawnAutoSelected = false;	//to manage additional move by the same pawn after eating
 
-var plyr1 = new Player('first');
-var plyr2 = new Player('second');
-var checkers = new Checkers(plyr1, plyr2);
-checkers.initialize(plyr1);
+var playerNoToStart = 1;
+var flgPowerfulKing = false;
+
+var plyr1;
+var plyr2;
+
+plyr1 = new Player('first');
+plyr2 = new Player('second');
+
+var checkers;
 
 let skipMoveButton = document.getElementById("skipMove");
+window.onload = init;
+document.getElementById("btnPlayAgain").onclick = init;
+document.getElementById("btnWhoStarts").onclick = toggleTurn;
+document.getElementById("btnHowManyPlayers").onclick = toggleMode;
+document.getElementById("btnKingPower").onclick = kingPower;
 
-skipMoveButton.onclick = function(){
-	checkers.skipMove();
 
-	if (checkers.getcanPlayerSkipMove() == 1)
-		skipMoveButton.style.display = "block";
-	else
-		skipMoveButton.style.display = "none";
+function init() {
 
-	message.textContent = "Message: ";
-	message.textContent+= checkers.getlastOperationMsg() + "; ";
-	message.textContent+= checkers.getlastUserMsg();
- 
+	checkers = null;
+
+	checkers = new Checkers(plyr1, plyr2);
+	if (playerNoToStart == 2) {
+		checkers.initialize(plyr2);
+		message.textContent = "Message: Turn of second";
+	}
+	else {
+		checkers.initialize(plyr1);
+		message.textContent = "Message: Turn of first";
+	}
+
+	checkers.setisPowerfulKing(flgPowerfulKing);
+
+	reDrawCheckers()
+
+	clickDestCellFlag = true;
 	PawnAutoSelected = false;
-	resetCheckersColor();
-}
-
 
 Array.from(myBoard.children).forEach(function(cell) { 
 
@@ -767,6 +794,54 @@ Array.from(myBoard.children).forEach(function(cell) {
 
   } 
 }); 
+
+}
+
+function kingPower() {
+	if ( (document.getElementById("btnKingPower").innerHTML) == "Normal King" ) {
+		document.getElementById("btnKingPower").innerHTML = "Powerful King";
+		flgPowerfulKing = true;
+	}
+	else if ( (document.getElementById("btnKingPower").innerHTML) == "Powerful King" ) {
+		document.getElementById("btnKingPower").innerHTML = "Normal King";
+		flgPowerfulKing = false;
+	}
+	init();
+}
+
+function toggleMode() {
+
+	alert("Computer AI is not ready yet. Play two-player game for now");
+
+}
+
+function toggleTurn() {
+	if ( (document.getElementById("btnWhoStarts").innerHTML) == "Player 1 Starts" ) {
+		document.getElementById("btnWhoStarts").innerHTML = "Player 2 Starts";
+		playerNoToStart = 2;
+	}
+	else if ( (document.getElementById("btnWhoStarts").innerHTML) == "Player 2 Starts" ) {
+		document.getElementById("btnWhoStarts").innerHTML = "Player 1 Starts";
+		playerNoToStart = 1;
+	}
+	init();
+}
+
+skipMoveButton.onclick = function(){
+	checkers.skipMove();
+
+	if (checkers.getcanPlayerSkipMove() == 1)
+		skipMoveButton.style.display = "block";
+	else
+		skipMoveButton.style.display = "none";
+
+	message.textContent = "Message: ";
+	message.textContent+= checkers.getlastOperationMsg() + "; ";
+	message.textContent+= checkers.getlastUserMsg();
+ 
+	PawnAutoSelected = false;
+	resetCheckersColor();
+}
 
 function clickCell(rw, co) {
 
