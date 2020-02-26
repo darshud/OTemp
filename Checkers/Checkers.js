@@ -304,6 +304,8 @@ Checkers.prototype.skipMove = function(pawn, Box) {
 	if (this.canPlayerSkipMove == 1) {
 		this.togglePlayer();
 		this.setcanPlayerSkipMove(0);
+
+		this.setlastUserMsg("Turn of " + this.getCurrentPlayer().getName());
 		this.setlastOperationMsg("Turn skipped");
 		return true;
 	}
@@ -488,7 +490,7 @@ function PlaySoundWav(soundObj) {
 Checkers.prototype.isValidMove
     = function(currBox, destBox) {
 
-    if(currBox.getC() == destBox.getC() ||
+    if(currBox.getC() == destBox.getC() &&
         currBox.getR() == destBox.getR()) {
 	this.setlastOperationMsg("Not moving");
         return false;
@@ -514,7 +516,7 @@ Checkers.prototype.isValidMove
     }
 
     if(!this.isBoxEmpty(destBox)) {
-        this.setlastOperationMsg("Not empty"); 
+        this.setlastOperationMsg("Box not available"); 
         return false;
     }
 
@@ -530,6 +532,19 @@ Checkers.prototype.isValidMove
         }
     }
 
+
+    var horizSteps = Math.abs(
+        destBox.getR() - currBox.getR()
+    );
+    var vertSteps = Math.abs(
+        destBox.getC() - currBox.getC()
+    );
+    if(horizSteps !== vertSteps) {
+        this.setlastOperationMsg("Wrong move"); 
+        return false;
+    }
+
+
     var BoxesWithPawns
         = this.getNonEmptyBoxesOnTrack(
             currBox, destBox
@@ -541,7 +556,7 @@ Checkers.prototype.isValidMove
 
     var maxStepsAllowed = pawn.getMaxStep();
     if (BoxesWithPawns.length === 2) {
-         //'Eating' - allow pawn 1 more step
+         //For 'eating' - allow 1 more step
          maxStepsAllowed = Math.min(
             this.boardSize, maxStepsAllowed+1
         );
@@ -564,16 +579,6 @@ Checkers.prototype.isValidMove
         }
     }
 
-    var horizSteps = Math.abs(
-        destBox.getR() - currBox.getR()
-    );
-    var vertSteps = Math.abs(
-        destBox.getC() - currBox.getC()
-    );
-    if(horizSteps !== vertSteps) {
-        this.setlastOperationMsg("Wrong move"); 
-        return false;
-    }
 
     if(horizSteps > maxStepsAllowed ||
         vertSteps > maxStepsAllowed) {
@@ -581,9 +586,10 @@ Checkers.prototype.isValidMove
         return false;
     }
 
+
     if(this.canPlayerSkipMove) {
 	if (pawn != this.lastMovedPawn) {
-		this.setlastOperationMsg("You can use SkipMove button"); 
+		this.setlastOperationMsg("Can skip turn"); 
 		return false;
 	}
     }
@@ -622,9 +628,9 @@ Checkers.prototype.move = function(currBox, destBox) {
     var kingFlag = false;
     kingFlag = this.promotePawnToKing_IfApplicable(destBox);
 
-    if (this.CurrentPlayer == this.player1)
+    if (this.getCurrentPlayer() == this.plyr1)
 	this.totalMoves_Player1+= 1;
-    else if (this.CurrentPlayer == this.player2)
+    else if (this.getCurrentPlayer() == this.plyr2)
 	this.totalMoves_Player2+= 1;
 
     if (this.plyr1.getPawnCnt() == 1 && this.plyr2.getPawnCnt() == 1)
@@ -632,12 +638,12 @@ Checkers.prototype.move = function(currBox, destBox) {
 
     if ( (kingFlag) || (this.getwasLastMove_EatPawn() != 1) ) {
     	this.togglePlayer();
-	this.setlastUserMsg("Next turn");
+	this.setlastUserMsg("Turn of " + this.getCurrentPlayer().getName());
     }
     else {
 	var set = this.checkSetCanPlayerSkipMove();;
     	if (set)
-		this.setlastUserMsg("Can skip the turn");
+		this.setlastUserMsg("Can skip turn");
     }
 
     this.setlastOperationMsg("Successful move");
@@ -683,6 +689,10 @@ skipMoveButton.onclick = function(){
 		skipMoveButton.style.display = "block";
 	else
 		skipMoveButton.style.display = "none";
+
+	message.textContent = "Message: ";
+	message.textContent+= checkers.getlastOperationMsg() + "; ";
+	message.textContent+= checkers.getlastUserMsg();
  
 	PawnAutoSelected = false;
 	resetCheckersColor();
@@ -695,6 +705,8 @@ Array.from(myBoard.children).forEach(function(cell) {
 
     if (!PawnAutoSelected)
     	resetCheckersColor();
+
+    //message.textContent = "Message: ";
 
     var element;
     if (elem.target) { 
@@ -717,17 +729,16 @@ Array.from(myBoard.children).forEach(function(cell) {
 	toR = getCellRC(cell, "Row");
 	toC = getCellRC(cell, "Column");
 
-	message.textContent = "";
+	message.textContent = "Message: ";
     
 	var moveRes = checkers.move(new Box(fromR, fromC), new Box(toR, toC));
 
 	if (!moveRes) {
-		message.textContent = checkers.getlastOperationMsg() + " ";
+		message.textContent+= checkers.getlastOperationMsg() + "; ";
 		PlaySoundWav("error");
 	}
 
 	message.textContent+= checkers.getlastUserMsg();
-
 
 		if (from && moveRes) { 
 			from = null; 
