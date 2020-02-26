@@ -785,7 +785,8 @@ function setSelectedColorToBox(e, rw, co) {
 			var p = brd[rw][co];
 			if (p) {
 				if (p.getPlayer().getName() == checkers.getCurrentPlayer().getName()) {
-					e.style.backgroundColor = "lightgreen";
+					//e.style.backgroundColor = "lightgreen";
+					e.setAttribute("class", "lightgreen");
 				}
 			}
 		}
@@ -835,6 +836,7 @@ function resetCheckersColor() {
 
 		if ((row % 2) == 0) {
 			if ((i % 2) == 0) {
+				//c.style.backgroundColor = "#FFEB3B";
 				c.setAttribute("class", "yellow");
 			}
 			else
@@ -842,6 +844,7 @@ function resetCheckersColor() {
 		}
 		else if ((row % 2) == 1) {
 			if ((i % 2) == 1) {
+				//c.style.backgroundColor = "#FFEB3B";
 				c.setAttribute("class", "yellow");
 			}
 			else

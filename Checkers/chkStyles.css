@@ -19,7 +19,7 @@ body {
         border: 3px solid #F44336; 
     } 
  
-    .red, .yellow { 
+    .red, .yellow, .lightgreen{ 
         float: left; 
         width: 49px; 
         height: 49px; 
@@ -28,6 +28,10 @@ body {
         display: table-cell; 
         vertical-align:middle; 
         box-sizing: border-box; 
+    } 
+
+    .lightgreen { 
+        background-color: lightgreen;
     } 
  
     .red { 
