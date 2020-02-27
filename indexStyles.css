@@ -12,27 +12,6 @@ body {
   width: 396px;
 }
 
-  button.button#bb
-  {
-    width:125px;
-    height:125px;
-  cursor: pointer;
-  }  
-
-  button.button#chk
-  {
-    width:125px;
-    height:125px;
-  cursor: pointer;
-  }
-
-  button.button#ttt
-  {
-    width:125px;
-    height:125px;
-  cursor: pointer;
-  }
-
 
 
 /* Container needed to position the button. Adjust the width as needed */
