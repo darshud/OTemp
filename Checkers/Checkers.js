@@ -881,12 +881,12 @@ function toggleMode() {
 
 function toggleTurn() {
 	if (window.confirm("This will reset the existing game")) {
-	if ( (document.getElementById("btnWhoStarts").innerHTML) == "Player 1 Starts" ) {
-		document.getElementById("btnWhoStarts").innerHTML = "Player 2 Starts";
+	if ( (document.getElementById("btnWhoStarts").innerHTML) == "Player1 Starts" ) {
+		document.getElementById("btnWhoStarts").innerHTML = "Player2 Starts";
 		playerNoToStart = 2;
 	}
-	else if ( (document.getElementById("btnWhoStarts").innerHTML) == "Player 2 Starts" ) {
-		document.getElementById("btnWhoStarts").innerHTML = "Player 1 Starts";
+	else if ( (document.getElementById("btnWhoStarts").innerHTML) == "Player2 Starts" ) {
+		document.getElementById("btnWhoStarts").innerHTML = "Player1 Starts";
 		playerNoToStart = 1;
 	}
 	init();
