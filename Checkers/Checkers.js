@@ -719,8 +719,8 @@ function init() {
 
 	checkers = null;
 
-	plyr1 = new Player('first');
-	plyr2 = new Player('second');
+	plyr1 = new Player('Player1');
+	plyr2 = new Player('Player2');
 
 	txtplayer1Pawns.textContent = "12";
 	txtplayer2Pawns.textContent = "12";
@@ -961,13 +961,13 @@ function reDrawCheckers() {
 		if (brd[row]) {
 			var p = brd[row][column];
 			if (p) {
-				if (p.getPlayer().getName() == "first") {
+				if (p.getPlayer().getName() == plyr1.getName()) {
 					if (p.getType() == "king")
 						c.innerHTML = pieceUcode_king;
 					else
 						c.innerHTML = pieceUcode_pawn;
 				}
-				else if (p.getPlayer().getName() == "second") {
+				else if (p.getPlayer().getName() == plyr2.getName()) {
 					if (p.getType() == "king")
 						c.innerHTML = blackpieceUcode_king;
 					else
