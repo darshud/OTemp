@@ -20,8 +20,8 @@
 
 <h1>Checkers</h1>
 
-<h2>Message: </h2> 
-<button id="skipMove" style="display:none;">Skip turn?</button>
+<label id="msg">Message:</label>
+<button id="skipMove" style="display:none;">click to skip</button>
 
 	<div class="checkersB" class="disable-select" style="cursor: pointer;"> 
             <!-- 0th row --> 
@@ -119,6 +119,7 @@
 
     <div class = "scores">
       <div class ="score">
+	<h2 id="player1Pawns"> 12 </h2>
         <h3>Player1</h3>
         <h4 id="player1Score"> 0 </h4>
       </div>
@@ -127,6 +128,7 @@
         <h4 id="tieScore"> 0 </h4>
       </div>
       <div class ="score">
+	<h2 id="player2Pawns"> 12 </h2>
         <h3>Player2</h3>
         <h4 id="player2Score"> 0 </h4>
       </div>
