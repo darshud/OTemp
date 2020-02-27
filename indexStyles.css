@@ -38,13 +38,14 @@ body {
 /* Container needed to position the button. Adjust the width as needed */
 .container {
   position: relative;
-  width: 50%;
+  width: 125px;
+  height: 125px;
 }
 
 /* Make the image responsive */
 .container img {
-  width: 125%;
-  height: 125;
+  width: 125px;
+  height: 125px;
 }
 
 /* Style the button and place it in the middle of the container/image */
