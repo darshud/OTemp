@@ -120,7 +120,13 @@ h4 {
   color: red;
 }
 
-
+.footer{
+  font-family: "Roboto", monospace;
+  margin: 0 auto;
+  font-size: 15px;
+  font-weight: lighter;
+  color: blue;
+}
 
 
 ul {
