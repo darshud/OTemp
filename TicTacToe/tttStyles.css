@@ -133,7 +133,13 @@ h4 {
                                   supported by Chrome, Opera and Firefox */
 }
 
-
+.footer{
+  font-family: "Roboto", monospace;
+  margin: 0 auto;
+  font-size: 15x;
+  font-weight: lighter;
+  color: blue;
+}
 
 
 
