@@ -14,7 +14,7 @@ window.onload = function(){
       DeviceMotionEvent.requestPermission()
         .then( function(permissionState) {
           if (permissionState === 'granted') {
-            window.addEventListener('devicemotion', function(e) {});
+            window.addEventListener('devicemotion', function(e) {alert(1);});
           }
         })
         .catch(console.error);
@@ -36,7 +36,7 @@ window.onload = function(){
       DeviceOrientationEvent.requestPermission()
         .then( function(permissionState) {
           if (permissionState === 'granted') {
-            window.addEventListener('deviceorientation', function(e) {});
+            window.addEventListener('deviceorientation', function(e) {alert(2);});
           }
         })
         .catch(console.error);
