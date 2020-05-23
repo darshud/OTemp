@@ -2,6 +2,11 @@ window.onload = function(){
 
 }
 
+  function Test() {
+
+	location.href = "https://www.albertosarullo.com/blog/javascript-accelerometer-demo-source";
+  }
+
   function permissionM() {
 
 	if ( location.protocol != "https:" ) {
