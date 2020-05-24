@@ -4,8 +4,8 @@ window.onload = function(){
 
   function Test() {
 
-	alert('Test()');
-	location.href = "https://www.albertosarullo.com/blog/javascript-accelerometer-demo-source";
+	alert('Test(0)');
+	location.href = "https://whatwebcando.today/device-motion.html";
   }
 
   function permissionM() {
