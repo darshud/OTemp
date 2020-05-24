@@ -190,7 +190,7 @@ if (!pausedFlag)
 	ctx2.clearRect(0,0,canvas2.width,canvas2.height);
 	ctx2.font="20px Roboto";	
 	ctx2.fillStyle="#000000"
-	ctx2.fillText("Elapsed Time: ",250,20);
+	ctx2.fillText("Elapsed Time: ",250,25);
 	ctx2.font="25px Roboto";
 	ctx2.fillStyle="#0095DD"
 	ctx2.fillText(str,400,25);
@@ -351,7 +351,7 @@ function drawSpeed()
 	}
 	if (pos == 0) { pos = posConst; }
 	ctx4.fillStyle = "#000000";
-	ctx4.fillText("Speed:",8,20);
+	ctx4.fillText("Speed:",8,25);
 	ctx4.font="25px Roboto";
 	if (speed < 40)
 		ctx4.fillStyle = "#8BFF06";
@@ -367,7 +367,7 @@ function drawScore()
 {
 	ctx3.font="20px Roboto";
 	ctx3.fillStyle="#000000";
-	ctx3.fillText("Score:",8,20);
+	ctx3.fillText("Score:",8,25);
 	ctx3.font="25px Roboto";
 	ctx3.fillStyle = "#0095DD";
 	ctx3.fillText(" "+score+"/"+totalPossibleScore,70,25);
@@ -386,7 +386,7 @@ function drawLives()
 	if(lives < 0){
 		lives = 0;
 	}
-	ctx3.fillText("Lives:",canvas3.width-100,20);
+	ctx3.fillText("Lives:",canvas3.width-100,25);
 	ctx3.font="25px Roboto";
 	ctx3.fillStyle = "#0095DD";
 	ctx3.fillText(" "+lives,canvas3.width-100+62,25);
