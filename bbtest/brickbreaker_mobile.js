@@ -35,9 +35,6 @@ var ctx3=canvas3.getContext("2d");
 
 var canvas4=document.getElementById("Topcanvas2");	//Speed
 var ctx4=canvas4.getContext("2d");
-
-var canvas5=document.getElementById("Orientcanvas");	//Speed
-var ctx5=canvas5.getContext("2d");
 	
 document.getElementById("pause").style.display = "inline";
 document.getElementById("pause").onclick = function(){
@@ -379,9 +376,8 @@ function drawScore()
 
 function drawOrientation()
 {
-	ctx5.font="20px Roboto";
-	ctx5.fillStyle = "#0095DD";
-	ctx5.fillText(" "+v_gamma+"/"+v_gamma*7,70,40);		
+	var g = document.getElementById('Ogamma');
+	g.innerText = v_gamma;
 }
 	
 function drawLives()
