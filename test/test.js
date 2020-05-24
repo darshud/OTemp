@@ -28,7 +28,8 @@ window.onload = function(){
         .then( function(permissionState) {
           if (permissionState === 'granted') {
             window.addEventListener('deviceorientation', deviceOrientationHandler, false);
-          }
+            window.addEventListener('devicemotion', deviceMotionHandler, false);
+	  }
         })
         .catch(console.error);
     } else {
