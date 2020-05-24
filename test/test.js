@@ -56,9 +56,9 @@ function deviceMotionHandler(e){
 	var g = document.getElementById('interval');
 	var g1 = document.getElementById('dtM');
 	
-	d.innerText = e.acceleration.x + e.acceleration.y + e.acceleration.z;
-	e.innerText = e.accelerationIncludingGravity;
-	f.innerText = e.rotationRate;
+	d.innerText = e.acceleration.x + ' : ' + e.acceleration.y + ' : ' + e.acceleration.z;
+	e.innerText = e.accelerationIncludingGravity.x + ' : ' + e.accelerationIncludingGravity.y + ' : ' + e.accelerationIncludingGravity.z;
+	f.innerText = e.rotationRate.alpha + ' : ' + e.rotationRate.beta + ' : ' + e.rotationRate.gamma;
 	g.innerText = e.interval;
 	
 	var d = new Date();
