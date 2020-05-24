@@ -50,9 +50,9 @@ function deviceMotionHandler(evnt){
 	var g = document.getElementById('interval');
 	var g1 = document.getElementById('dtM');
 
-	var d = new Date();
-	var n = d.getTime();
-	g1.innerText = n;
+	var p = new Date();
+	var q = p.getTime();
+	g1.innerText = q;
 	
 	d.innerText = evnt.acceleration.x; + ' : ' + evnt.acceleration.y + ' : ' + evnt.acceleration.z;
 	e.innerText = evnt.accelerationIncludingGravity.x + ' : ' + evnt.accelerationIncludingGravity.y + ' : ' + evnt.accelerationIncludingGravity.z;
@@ -68,9 +68,9 @@ function deviceOrientationHandler(e){
 	var c = document.getElementById('gamma');
 	var c1 = document.getElementById('dtO');
 
-	var d = new Date();
-	var n = d.getTime();
-	c1.innerText = n;
+	var p = new Date();
+	var q = p.getTime();
+	c1.innerText = q;
 
 	a.innerText = e.alpha;
 	b.innerText = e.beta;
