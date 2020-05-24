@@ -190,10 +190,10 @@ if (!pausedFlag)
 	ctx2.clearRect(0,0,canvas2.width,canvas2.height);
 	ctx2.font="20px Roboto";	
 	ctx2.fillStyle="#000000"
-	ctx2.fillText("Elapsed Time: ",250,15);
+	ctx2.fillText("Elapsed Time: ",250,20);
 	ctx2.font="25px Roboto";
 	ctx2.fillStyle="#0095DD"
-	ctx2.fillText(str,350,15);
+	ctx2.fillText(str,400,25);
 
         window.start = window.start + 1;
 
@@ -324,7 +324,7 @@ function drawHeading()
 	//ctx3.fillStyle="#000000";
 	ctx3.fontWeight="bolder";
 	ctx3.fillStyle="blue";
-	ctx3.fillText("Brick Breaker",300,30);
+	ctx3.fillText("Brick Breaker",300,35);
 }
 
 function drawSpeed()
@@ -351,7 +351,7 @@ function drawSpeed()
 	}
 	if (pos == 0) { pos = posConst; }
 	ctx4.fillStyle = "#000000";
-	ctx4.fillText("Speed:",8,15);
+	ctx4.fillText("Speed:",8,20);
 	ctx4.font="25px Roboto";
 	if (speed < 40)
 		ctx4.fillStyle = "#8BFF06";
@@ -359,7 +359,7 @@ function drawSpeed()
 		ctx4.fillStyle = "#0095DD";
 	else
 		ctx4.fillStyle = "#FF0000";
-	ctx4.fillText(" "+speed,pos,15);	
+	ctx4.fillText(" "+speed,pos,25);	
 	ctx4.closePath();
 }
 
@@ -370,7 +370,7 @@ function drawScore()
 	ctx3.fillText("Score:",8,20);
 	ctx3.font="25px Roboto";
 	ctx3.fillStyle = "#0095DD";
-	ctx3.fillText(" "+score+"/"+totalPossibleScore,70,20);
+	ctx3.fillText(" "+score+"/"+totalPossibleScore,70,25);
 }
 
 function drawOrientation()
@@ -389,7 +389,7 @@ function drawLives()
 	ctx3.fillText("Lives:",canvas3.width-100,20);
 	ctx3.font="25px Roboto";
 	ctx3.fillStyle = "#0095DD";
-	ctx3.fillText(" "+lives,canvas3.width-100+62,20);
+	ctx3.fillText(" "+lives,canvas3.width-100+62,25);
 }
 
 function draw()
