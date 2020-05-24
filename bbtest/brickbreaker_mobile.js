@@ -192,7 +192,7 @@ if (!pausedFlag)
 	ctx2.font="15px Roboto";	
 	ctx2.fillStyle="#000000"
 	ctx2.fillText("Elapsed Time: ",250,15);
-	ctx2.font="16px Roboto";
+	ctx2.font="20px Roboto";
 	ctx2.fillStyle="#0095DD"
 	ctx2.fillText(str,350,15);
 
@@ -228,7 +228,7 @@ function drawBricks()
 				ctx.stroke();
 				ctx.fillStyle = "#000000";
 				ctx.textAlign = "center";
-				ctx.font="15px Roboto";
+				ctx.font="20px Roboto";
 				if (bricks[c][r].special1 != "") {
 					ctx.fillText(bricks[c][r].special1,brickX + brickW/2, brickY + brickH/2);
 				}
