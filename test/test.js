@@ -62,6 +62,6 @@ function deviceMotionHandler(e){
 
 function deviceOrientationHandler(e){
 	
-	alert('oh');
+	alert(e.alpha);
 
 }
