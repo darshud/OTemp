@@ -24,12 +24,17 @@ window.onload = function(){
 	  
 	// feature detect
     if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+	    alert(1);
       DeviceOrientationEvent.requestPermission()
         .then( function(permissionState) {
           if (permissionState === 'granted') {
+		  alert('PG-done');
             window.addEventListener('deviceorientation', deviceOrientationHandler, false);
+		  alert('PO-done');
             window.addEventListener('devicemotion', deviceMotionHandler, false);
+		  alert('PM-done');
 	  }
+	      alert(2);
         })
         .catch(console.error);
     } else {
