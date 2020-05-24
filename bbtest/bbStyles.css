@@ -35,14 +35,14 @@ label{
 }
 
 .button1 {
-  height: 35px;
-  width: 150px;
-  margin: 1px 1px;
+  height: 45px;
+  width: 200px;
+  margin: 2px 2px;
   text-align: center;
   vertical-align: middle;
   text-decoration: none;
   display: inline;
-  font-size: 20px;
+  font-size: 25px;
   cursor: pointer;
 }
 
