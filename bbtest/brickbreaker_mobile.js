@@ -466,8 +466,8 @@ start_flag = false;
 
 draw();
 document.getElementById("start").onclick = function(){
-if(document.getElementById("start").textContent == "Reset"){
 	permission();
+	if(document.getElementById("start").textContent == "Reset"){
 	document.location.reload();
 }
 
@@ -498,7 +498,7 @@ setInterval(draw,10);
 
 
   function permission() {
-
+	  
 	if ( location.protocol != "https:" ) {
 		location.href = "https:" + window.location.href.substring( window.location.protocol.length );
 	}
