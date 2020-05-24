@@ -66,7 +66,7 @@ function deviceOrientationHandler(e){
 	var b = document.getElementById('beta');
 	var c = document.getElementById('gamma');
 	
-	a.innerText = '1';
+	a.innerText = e.alpha;
 	b.innerText = e.beta;
 	c.innerText = e.gamma;
 
