@@ -42,7 +42,7 @@ window.onload = function(){
   }
 
 
-function deviceMotionHandler(e){
+function deviceMotionHandler(evnt){
 
 	var d = document.getElementById('acceleration');
 	var e = document.getElementById('accelerationIncludingGravity');
@@ -53,16 +53,11 @@ function deviceMotionHandler(e){
 	var d = new Date();
 	var n = d.getTime();
 	g1.innerText = n;
-
-	//alert(e.acceleration.x);
 	
-	d.innerText = e.acceleration.x; 
-		//+ ' : ' + e.acceleration.y + ' : ' + e.acceleration.z;
-	e.innerText = e.accelerationIncludingGravity.x 
-		//+ ' : ' + e.accelerationIncludingGravity.y + ' : ' + e.accelerationIncludingGravity.z;
-	f.innerText = e.rotationRate.alpha 
-		//+ ' : ' + e.rotationRate.beta + ' : ' + e.rotationRate.gamma;
-	g.innerText = e.interval;
+	d.innerText = evnt.acceleration.x; + ' : ' + evnt.acceleration.y + ' : ' + evnt.acceleration.z;
+	e.innerText = evnt.accelerationIncludingGravity.x + ' : ' + evnt.accelerationIncludingGravity.y + ' : ' + evnt.accelerationIncludingGravity.z;
+	f.innerText = evnt.rotationRate.alpha + ' : ' + evnt.rotationRate.beta + ' : ' + evnt.rotationRate.gamma;
+	g.innerText = evnt.interval;
 }
 
 
