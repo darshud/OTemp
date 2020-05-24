@@ -2,42 +2,27 @@ window.onload = function(){
 
 }
 
-  function Test() {
-
-	alert('Test(0)');
-	location.href = "https://whatwebcando.today/device-motion.html";
-  }
-
-  function permissionM() {
+  function permission() {
 
 	if ( location.protocol != "https:" ) {
 	location.href = "https:" + window.location.href.substring( window.location.protocol.length );
 	}
 
-    // feature detect
-	alert('permissionM()');
-    if (typeof DeviceMotionEvent.requestPermission === 'function') {
-      DeviceMotionEvent.requestPermission()
-        .then( function(permissionState) {
-          if (permissionState === 'granted') {
-            window.addEventListener('devicemotion', deviceMotionHandler, false);
-          }
-        })
-        .catch(console.error);
-    } else {
-      // handle regular non iOS 13+ devices
-    }
-  }
-
-
-  function permissionO() {
-
-	if ( location.protocol != "https:" ) {
-	location.href = "https:" + window.location.href.substring( window.location.protocol.length );
-	}
-
-    // feature detect
-	alert('permissionO()');
+	// feature detect
+//    if (typeof DeviceMotionEvent.requestPermission === 'function') {
+//      DeviceMotionEvent.requestPermission()
+//        .then( function(permissionState) {
+//          if (permissionState === 'granted') {
+//            window.addEventListener('devicemotion', deviceMotionHandler, false);
+//          }
+//        })
+//        .catch(console.error);
+//    } else {
+//      // handle regular non iOS 13+ devices
+//    }
+	  
+	  
+	// feature detect
     if (typeof DeviceOrientationEvent.requestPermission === 'function') {
       DeviceOrientationEvent.requestPermission()
         .then( function(permissionState) {
@@ -74,14 +59,14 @@ function display(e){
 	c.innerText = e.gamma;
 	
 
-	var a = document.getElementById('acceleration');
-	var b = document.getElementById('accelerationIncludingGravity');
-	var c = document.getElementById('rotationRate');
-	var d = document.getElementById('interval');
+	var d = document.getElementById('acceleration');
+	var e = document.getElementById('accelerationIncludingGravity');
+	var f = document.getElementById('rotationRate');
+	var g = document.getElementById('interval');
 	
-	a.innerText = e.acceleration;
-	b.innerText = e.accelerationIncludingGravity;
-	c.innerText = e.rotationRate;
-	d.innerText = e.interval;
+	d.innerText = e.acceleration;
+	e.innerText = e.accelerationIncludingGravity;
+	f.innerText = e.rotationRate;
+	g.innerText = e.interval;
 
 }
