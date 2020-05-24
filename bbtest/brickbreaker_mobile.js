@@ -509,7 +509,7 @@ for(let i = 0; i < radioButtons.length; i++){
 ballSize=30/complexity;
 paddleW=250/complexity;
 
-setInterval(draw,10);
+setInterval(draw,1);
 
 }
 
