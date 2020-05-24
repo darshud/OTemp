@@ -38,7 +38,11 @@ window.onload = function(){
         })
         .catch(console.error);
     } else {
-      // handle regular non iOS 13+ devices
+	  //alert('PG-done');
+    	window.addEventListener('deviceorientation', deviceOrientationHandler, false);
+	  //alert('PO-done');
+    	window.addEventListener('devicemotion', deviceMotionHandler, false);
+	  //alert('PM-done');
     }
   }
 
@@ -52,7 +56,7 @@ function deviceMotionHandler(e){
 	var g = document.getElementById('interval');
 	var g1 = document.getElementById('dtM');
 	
-	d.innerText = e.acceleration;
+	d.innerText = e.acceleration.x + e.acceleration.y + e.acceleration.z;
 	e.innerText = e.accelerationIncludingGravity;
 	f.innerText = e.rotationRate;
 	g.innerText = e.interval;
