@@ -29,7 +29,6 @@ var ctx=canvas.getContext("2d");
 
 var canvas2=document.getElementById("Topcanvas");	//Timer
 var ctx2=canvas2.getContext("2d");
-
 var canvas3=document.getElementById("Headingcanvas");	//"Brick Breaker"
 var ctx3=canvas3.getContext("2d");
 
@@ -65,14 +64,14 @@ var paddleX=(canvas.width-paddleW)/2;
 var RKeyPressed=false;
 var LKeyPressed=false;
 var brickRCnt=5;
-var brickColCnt=6;
+var brickColCnt=7;
 var brickW=120;
 var brickH=30;
 var brickPadding=10;
 var brickOffSetTop=5;
 var brickOffSetLeft=30;
 var score=0;
-var lives=3;
+var lives=4;
 var speed=0;
 var speed_increment=1.2;
 var speed_decrement=1.2;
