@@ -65,5 +65,5 @@ function deviceOrientationHandler(e){
 	var a = document.getElementById('alpha');
 	
 	a.innerText = '1';
-	alert(e);
+	//alert(e);
 }
