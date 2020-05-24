@@ -54,13 +54,15 @@ function deviceMotionHandler(e){
 	var n = d.getTime();
 	g1.innerText = n;
 
-	alert(e.acceleration.x);
+	//alert(e.acceleration.x);
 	
-	//d.innerText = e.acceleration.x; 
+	d.innerText = e.acceleration.x; 
 		//+ ' : ' + e.acceleration.y + ' : ' + e.acceleration.z;
-	//e.innerText = e.accelerationIncludingGravity.x + ' : ' + e.accelerationIncludingGravity.y + ' : ' + e.accelerationIncludingGravity.z;
-	//f.innerText = e.rotationRate.alpha + ' : ' + e.rotationRate.beta + ' : ' + e.rotationRate.gamma;
-	//g.innerText = e.interval;
+	e.innerText = e.accelerationIncludingGravity.x 
+		//+ ' : ' + e.accelerationIncludingGravity.y + ' : ' + e.accelerationIncludingGravity.z;
+	f.innerText = e.rotationRate.alpha 
+		//+ ' : ' + e.rotationRate.beta + ' : ' + e.rotationRate.gamma;
+	g.innerText = e.interval;
 }
 
 
