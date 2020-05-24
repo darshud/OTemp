@@ -45,25 +45,6 @@ window.onload = function(){
 
 
 function deviceMotionHandler(e){
-	display(e);	
-}
-
-
-function deviceOrientationHandler(e){
-	display(e);	
-}
-
-
-function display(e){
-
-	var a = document.getElementById('alpha');
-	var b = document.getElementById('beta');
-	var c = document.getElementById('gamma');
-	
-	a.innerText = e.alpha;
-	b.innerText = e.beta;
-	c.innerText = e.gamma;
-	
 
 	var d = document.getElementById('acceleration');
 	var e = document.getElementById('accelerationIncludingGravity');
@@ -74,5 +55,17 @@ function display(e){
 	e.innerText = e.accelerationIncludingGravity;
 	f.innerText = e.rotationRate;
 	g.innerText = e.interval;
-
 }
+
+
+function deviceOrientationHandler(e){
+	
+	var a = document.getElementById('alpha');
+	var b = document.getElementById('beta');
+	var c = document.getElementById('gamma');
+	
+	a.innerText = e.alpha;
+	b.innerText = e.beta;
+	c.innerText = e.gamma;	
+}
+
