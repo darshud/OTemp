@@ -20,7 +20,7 @@ window.onload = function(){
       DeviceMotionEvent.requestPermission()
         .then( function(permissionState) {
           if (permissionState === 'granted') {
-            window.addEventListener('devicemotion', function(e) {});
+            window.addEventListener('devicemotion', deviceMotionHandler, false);
           }
         })
         .catch(console.error);
@@ -55,8 +55,16 @@ window.onload = function(){
 
 function deviceMotionHandler(e){
 
-	alert('mh');
-
+	var a = document.getElementById('acceleration');
+	var b = document.getElementById('accelerationIncludingGravity');
+	var c = document.getElementById('rotationRate');
+	var d = document.getElementById('interval');
+	
+	a.innerText = e.acceleration;
+	b.innerText = e.accelerationIncludingGravity;
+	c.innerText = e.rotationRate;
+	d.innerText = e.interval;
+	
 }
 
 
