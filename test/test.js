@@ -9,17 +9,17 @@ window.onload = function(){
 	}
 
 	// feature detect
-//    if (typeof DeviceMotionEvent.requestPermission === 'function') {
-//      DeviceMotionEvent.requestPermission()
-//        .then( function(permissionState) {
-//          if (permissionState === 'granted') {
-//            window.addEventListener('devicemotion', deviceMotionHandler, false);
-//          }
-//        })
-//        .catch(console.error);
-//    } else {
-//      // handle regular non iOS 13+ devices
-//    }
+    if (typeof DeviceMotionEvent.requestPermission === 'function') {
+      DeviceMotionEvent.requestPermission()
+        .then( function(permissionState) {
+          if (permissionState === 'granted') {
+            window.addEventListener('devicemotion', deviceMotionHandler, false);
+          }
+        })
+        .catch(console.error);
+    } else {
+            window.addEventListener('devicemotion', deviceMotionHandler, false);
+    }
 	  
 	  
 	// feature detect
@@ -31,21 +31,15 @@ window.onload = function(){
 		  //alert('PG-done');
             window.addEventListener('deviceorientation', deviceOrientationHandler, false);
 		  //alert('PO-done');
-            window.addEventListener('devicemotion', deviceMotionHandler, false);
-		  //alert('PM-done');
 	  }
 	      //alert(2);
         })
         .catch(console.error);
     } else {
-	  //alert('PG-done');
     	window.addEventListener('deviceorientation', deviceOrientationHandler, false);
 	  //alert('PO-done');
-    	window.addEventListener('devicemotion', deviceMotionHandler, false);
-	  //alert('PM-done');
     }
   }
-
 
 
 function deviceMotionHandler(e){
@@ -83,4 +77,3 @@ function deviceOrientationHandler(e){
 	var n = d.getTime();
 	c1.innerText = n;
 }
-
