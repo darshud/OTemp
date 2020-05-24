@@ -485,7 +485,7 @@ function draw()
 start_flag = false;
 }
 
-//draw();
+draw();
 document.getElementById("start").onclick = function(){
 	permission();
 	if(document.getElementById("start").textContent == "Reset"){
@@ -509,9 +509,9 @@ for(let i = 0; i < radioButtons.length; i++){
 ballSize=30/complexity;
 paddleW=250/complexity;
 
-draw();
+//draw();
 	
-setInterval(draw,100);
+setInterval(draw,1);
 
 }
 
