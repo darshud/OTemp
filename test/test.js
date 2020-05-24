@@ -68,6 +68,6 @@ function deviceOrientationHandler(e){
 	
 	a.innerText = '1';
 	b.innerText = e.beta;
-	c.innerText = '2';
+	c.innerText = e.gamma;
 
 }
