@@ -62,6 +62,8 @@ function deviceMotionHandler(e){
 
 function deviceOrientationHandler(e){
 	
-	alert(e.alpha);
-
+	var a = document.getElementById('alpha');
+	
+	a.innerText = '1';
+	alert(e);
 }
