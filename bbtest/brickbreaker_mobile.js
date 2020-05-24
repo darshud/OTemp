@@ -430,7 +430,7 @@ function draw()
 		else{
 			PlaySoundWav("lifeLess1");	//losing life
 			lives=lives-1;
-			if(lives <= 0)    
+			if(lives == 0)    
 			{
 				PlaySoundMp3("lose1");	//game over
 				lives = -1;	//game over
@@ -485,7 +485,6 @@ function draw()
 start_flag = false;
 }
 
-	alert(start_flag);
 draw();
 document.getElementById("start").onclick = function(){
 	permission();
