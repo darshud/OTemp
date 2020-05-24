@@ -8,7 +8,7 @@ v_permitted = false;
 
 var start_flag = true;
 
-PlaySoundWav("start1");	//game start
+//PlaySoundWav("start1");	//game start
 
 var complexity = 4;
 var radioButtons = document.getElementsByName("complexity");
@@ -71,14 +71,14 @@ var brickPadding=10;
 var brickOffSetTop=5;
 var brickOffSetLeft=30;
 var score=0;
-var lives=4;
+var lives=5;
 var speed=0;
 var speed_increment=1.2;
 var speed_decrement=1.2;
 var colors = ["#C1CAE8", "#FDBC08", "#8BFF06", "#EDFD08", "#08FDED", "#FD08D4"];
 var scores = [1,2,3,4,5,6];
 var special = ["+ Speed", "- Speed", "+ Life ", "- Life "]
-var rComplexity = ["Baby", "Easy", "Medium", "Hard", "Pro", "Crazy", "Death"]
+var rComplexity = ["Baby", "Easy", "Medium", "Hard", "Pro"]
 var totalPossibleScore = 0;
 var minusLifeCount = 0;
 var bricks=[];
