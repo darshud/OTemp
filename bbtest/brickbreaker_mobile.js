@@ -1,8 +1,10 @@
 var v_gamma;
+var v_permitted;
 
 window.onload = function(){
 
 v_gamma = 0;
+v_permitted = false;
 
 var start_flag = true;
 
@@ -382,7 +384,7 @@ function drawLives()
 	ctx3.fillText("Lives:",canvas3.width-100,20);
 	ctx3.font="20px Roboto";
 	ctx3.fillStyle = "#0095DD";
-	ctx3.fillText(v_gamma,canvas3.width-100+62,20);
+	ctx3.fillText(" "+lives,canvas3.width-100+62,20);
 }
 
 function draw()
@@ -445,9 +447,21 @@ function draw()
 	{
 		paddleX+=7;
 	}
-	else if(LKeyPressed && paddleX>0){
+	else if(LKeyPressed && paddleX>0)
+	{
 		paddleX-=7;
 	}
+	
+	if(v_permitted && paddleX <canvas.width-paddleW && v_gamma > 0)
+	{
+		paddleX+=v_gamma*7;
+	}
+	else if(v_permitted && paddleX>0 && v_gamma < 0)
+	{
+		paddleX-=(v_gamma*7)*-1;
+	}
+	
+	
 	x += complexity*dx/2;
 	y += complexity*dy/2;
 
@@ -498,49 +512,25 @@ setInterval(draw,10);
 
 
   function permission() {
-	  
+
 	if ( location.protocol != "https:" ) {
 		location.href = "https:" + window.location.href.substring( window.location.protocol.length );
 	}
 
-	// feature detect
-    if (typeof DeviceMotionEvent.requestPermission === 'function') {
-      DeviceMotionEvent.requestPermission()
-        .then( function(permissionState) {
-          if (permissionState === 'granted') {
-            window.addEventListener('devicemotion', deviceMotionHandler, false);
-          }
-        })
-        .catch(console.error);
-    } else {
-            window.addEventListener('devicemotion', deviceMotionHandler, false);
-    }
-	  
-	  
-	// feature detect
     if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-	    //alert(1);
       DeviceOrientationEvent.requestPermission()
         .then( function(permissionState) {
           if (permissionState === 'granted') {
-		  //alert('PG-done');
-            window.addEventListener('deviceorientation', deviceOrientationHandler, false);
-		  //alert('PO-done');
+		  v_permitted = true;
+		  window.addEventListener('deviceorientation', deviceOrientationHandler, false);
 	  }
-	      //alert(2);
         })
         .catch(console.error);
     } else {
-    	window.addEventListener('deviceorientation', deviceOrientationHandler, false);
-	  //alert('PO-done');
+	v_permitted = true;
+	window.addEventListener('deviceorientation', deviceOrientationHandler, false);
     }
   }
-
-
-function deviceMotionHandler(evnt){
-
-}
-
 
 function deviceOrientationHandler(e){
 	
