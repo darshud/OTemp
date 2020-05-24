@@ -446,11 +446,12 @@ function draw()
 	    }
 	}
 
-	if((x+dx < ballSize|| (x+dx > canvas.width-ballSize)) ){
-	PlaySoundWav("wall1");	//hitting sidewall
-			dx=-dx;
+	if((x+dx < ballSize || (x+dx > canvas.width-ballSize)) ){
+		PlaySoundWav("wall1");	//hitting sidewall
+		dx=-dx;
 	}
-	if(RKeyPressed && paddleX <canvas.width-paddleW)
+	
+	if(RKeyPressed && paddleX < canvas.width-paddleW)
 	{
 		paddleX+=7;
 	}
@@ -459,13 +460,14 @@ function draw()
 		paddleX-=7;
 	}
 	
+	
 	if(v_permitted && paddleX <canvas.width-paddleW && v_gamma > 0)
 	{
-		paddleX=(v_gamma*7)*-1;
+		paddleX+=7;
 	}
 	else if(v_permitted && paddleX>0 && v_gamma < 0)
 	{
-		paddleX=(v_gamma*7);
+		paddleX-=7;
 	}
 	
 	
