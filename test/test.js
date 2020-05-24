@@ -49,16 +49,16 @@ function deviceMotionHandler(e){
 	var f = document.getElementById('rotationRate');
 	var g = document.getElementById('interval');
 	var g1 = document.getElementById('dtM');
-	
+
+	var d = new Date();
+	var n = d.getTime();
+	g1.innerText = n;
+
 	d.innerText = e.acceleration.x; 
 		//+ ' : ' + e.acceleration.y + ' : ' + e.acceleration.z;
 	//e.innerText = e.accelerationIncludingGravity.x + ' : ' + e.accelerationIncludingGravity.y + ' : ' + e.accelerationIncludingGravity.z;
 	//f.innerText = e.rotationRate.alpha + ' : ' + e.rotationRate.beta + ' : ' + e.rotationRate.gamma;
 	//g.innerText = e.interval;
-	
-	var d = new Date();
-	var n = d.getTime();
-	g1.innerText = n;
 }
 
 
@@ -68,12 +68,12 @@ function deviceOrientationHandler(e){
 	var b = document.getElementById('beta');
 	var c = document.getElementById('gamma');
 	var c1 = document.getElementById('dtO');
-	
-	a.innerText = e.alpha;
-	b.innerText = e.beta;
-	c.innerText = e.gamma;	
-	
+
 	var d = new Date();
 	var n = d.getTime();
 	c1.innerText = n;
+
+	a.innerText = e.alpha;
+	b.innerText = e.beta;
+	c.innerText = e.gamma;		
 }
