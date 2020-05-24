@@ -485,6 +485,7 @@ function draw()
 start_flag = false;
 }
 
+	alert(start_flag);
 draw();
 document.getElementById("start").onclick = function(){
 	permission();
