@@ -36,6 +36,9 @@ var ctx3=canvas3.getContext("2d");
 var canvas4=document.getElementById("Topcanvas2");	//Speed
 var ctx4=canvas4.getContext("2d");
 
+var canvas5=document.getElementById("Orientcanvas");	//Speed
+var ctx5=canvas5.getContext("2d");
+	
 document.getElementById("pause").style.display = "inline";
 document.getElementById("pause").onclick = function(){
 	pausedFlag = true;
@@ -374,6 +377,13 @@ function drawScore()
 	ctx3.fillText(" "+score+"/"+totalPossibleScore,70,20);
 }
 
+function drawOrientation()
+{
+	ctx5.font="20px Roboto";
+	ctx5.fillStyle = "#0095DD";
+	ctx5.fillText(" "+v_gamma+"/"+v_gamma*7,70,40);		
+}
+	
 function drawLives()
 {
 	ctx3.font="16px Roboto";
@@ -395,6 +405,7 @@ function draw()
 	drawHeading();
 	drawLives();
 	drawScore();
+	drawOrientation();
 
 	ctx4.clearRect(0,0,canvas4.width,canvas4.height);	
 	drawSpeed();
