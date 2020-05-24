@@ -42,7 +42,7 @@ window.onload = function(){
       DeviceOrientationEvent.requestPermission()
         .then( function(permissionState) {
           if (permissionState === 'granted') {
-            window.addEventListener('deviceorientation', function(e) {alert(e.alpha);});
+            window.addEventListener('deviceorientation', deviceOrientationHandler(e));
           }
         })
         .catch(console.error);
