@@ -382,7 +382,7 @@ function drawLives()
 	ctx3.fillText("Lives:",canvas3.width-100,20);
 	ctx3.font="20px Roboto";
 	ctx3.fillStyle = "#0095DD";
-	ctx3.fillText(" "+lives+" "+v_gamma,canvas3.width-100+92,20);
+	ctx3.fillText(v_gamma,canvas3.width-100+62,20);
 }
 
 function draw()
