@@ -20,7 +20,7 @@ window.onload = function(){
       DeviceMotionEvent.requestPermission()
         .then( function(permissionState) {
           if (permissionState === 'granted') {
-            window.addEventListener('devicemotion', function(e) {});
+            window.addEventListener('devicemotion', deviceMotionHandler, false);
           }
         })
         .catch(console.error);
@@ -52,8 +52,23 @@ window.onload = function(){
   }
 
 
-function deviceOrientationHandler(e){
 
+function deviceMotionHandler(e){
+
+	alert('mh');
+  var a = document.getElementById('alpha');
+  var b = document.getElementById('beta');
+  var g = document.getElementById('gamma');
+
+  a.innerText = e.alpha;
+  b.innerText = e.beta;
+  g.innerText = e.gamma;
+}
+
+
+function deviceOrientationHandler(e){
+	
+	alert('oh');
   var a = document.getElementById('alpha');
   var b = document.getElementById('beta');
   var g = document.getElementById('gamma');
