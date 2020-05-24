@@ -462,11 +462,11 @@ function draw()
 	
 	if(v_permitted && paddleX <canvas.width-paddleW && v_gamma > 0)
 	{
-		paddleX+=1+(Math.abs(v_gamma)/10);
+		paddleX+= (Math.abs(v_gamma.toFixed())/10) + (0.3 * complexity);
 	}
 	else if(v_permitted && paddleX>0 && v_gamma < 0)
 	{
-		paddleX-=1+(Math.abs(v_gamma)/10);
+		paddleX-= (Math.abs(v_gamma.toFixed())/10) + (0.3 * complexity);
 	}
 	
 	
