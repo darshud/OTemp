@@ -24,17 +24,17 @@ window.onload = function(){
 	  
 	// feature detect
     if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-	    alert(1);
+	    //alert(1);
       DeviceOrientationEvent.requestPermission()
         .then( function(permissionState) {
           if (permissionState === 'granted') {
-		  alert('PG-done');
+		  //alert('PG-done');
             window.addEventListener('deviceorientation', deviceOrientationHandler, false);
-		  alert('PO-done');
+		  //alert('PO-done');
             window.addEventListener('devicemotion', deviceMotionHandler, false);
-		  alert('PM-done');
+		  //alert('PM-done');
 	  }
-	      alert(2);
+	      //alert(2);
         })
         .catch(console.error);
     } else {
@@ -50,11 +50,16 @@ function deviceMotionHandler(e){
 	var e = document.getElementById('accelerationIncludingGravity');
 	var f = document.getElementById('rotationRate');
 	var g = document.getElementById('interval');
+	var g1 = document.getElementById('dtM');
 	
 	d.innerText = e.acceleration;
 	e.innerText = e.accelerationIncludingGravity;
 	f.innerText = e.rotationRate;
 	g.innerText = e.interval;
+	
+	var d = new Date();
+	var n = d.getTime();
+	g1.innerText = n;
 }
 
 
@@ -63,9 +68,14 @@ function deviceOrientationHandler(e){
 	var a = document.getElementById('alpha');
 	var b = document.getElementById('beta');
 	var c = document.getElementById('gamma');
+	var c1 = document.getElementById('dtO');
 	
 	a.innerText = e.alpha;
 	b.innerText = e.beta;
 	c.innerText = e.gamma;	
+	
+	var d = new Date();
+	var n = d.getTime();
+	c1.innerText = n;
 }
 
