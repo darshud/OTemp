@@ -463,11 +463,11 @@ function draw()
 	
 	if(v_permitted && paddleX <canvas.width-paddleW && v_gamma > 0)
 	{
-		paddleX+=7;
+		paddleX+=1;
 	}
 	else if(v_permitted && paddleX>0 && v_gamma < 0)
 	{
-		paddleX-=7;
+		paddleX-=1;
 	}
 	
 	
