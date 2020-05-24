@@ -190,10 +190,10 @@ if (!pausedFlag)
 	ctx2.clearRect(0,0,canvas2.width,canvas2.height);
 	ctx2.font="20px Roboto";	
 	ctx2.fillStyle="#000000"
-	ctx2.fillText("Elapsed Time: ",250,25);
+	ctx2.fillText("Elapsed Time: ",180,25);
 	ctx2.font="25px Roboto";
 	ctx2.fillStyle="#0095DD"
-	ctx2.fillText(str,400,25);
+	ctx2.fillText(str,330,25);
 
         window.start = window.start + 1;
 
