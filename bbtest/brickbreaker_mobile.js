@@ -29,6 +29,7 @@ var ctx=canvas.getContext("2d");
 
 var canvas2=document.getElementById("Topcanvas");	//Timer
 var ctx2=canvas2.getContext("2d");
+	
 var canvas3=document.getElementById("Headingcanvas");	//"Brick Breaker"
 var ctx3=canvas3.getContext("2d");
 
@@ -394,8 +395,6 @@ function drawLives()
 
 function draw()
 {	
-	//ctx2.clearRect(0,0,canvas2.width,canvas2.height);
-
 	ctx3.clearRect(0,0,canvas3.width,canvas3.height);
 	drawHeading();
 	drawLives();
@@ -431,7 +430,7 @@ function draw()
 		else{
 			PlaySoundWav("lifeLess1");	//losing life
 			lives=lives-1;
-			if(lives == 0)    
+			if(lives <= 0)    
 			{
 				PlaySoundMp3("lose1");	//game over
 				lives = -1;	//game over
@@ -486,7 +485,7 @@ function draw()
 start_flag = false;
 }
 
-draw();
+//draw();
 document.getElementById("start").onclick = function(){
 	permission();
 	if(document.getElementById("start").textContent == "Reset"){
@@ -509,7 +508,10 @@ for(let i = 0; i < radioButtons.length; i++){
 
 ballSize=30/complexity;
 paddleW=250/complexity;
-setInterval(draw,10);
+
+draw();
+	
+setInterval(draw,100);
 
 }
 
