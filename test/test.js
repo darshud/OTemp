@@ -42,7 +42,7 @@ window.onload = function(){
       DeviceOrientationEvent.requestPermission()
         .then( function(permissionState) {
           if (permissionState === 'granted') {
-            window.addEventListener('deviceorientation', deviceOrientationHandler(e));
+            window.addEventListener('deviceorientation', deviceOrientationHandler, false);
           }
         })
         .catch(console.error);
@@ -56,24 +56,12 @@ window.onload = function(){
 function deviceMotionHandler(e){
 
 	alert('mh');
-  var a = document.getElementById('alpha');
-  var b = document.getElementById('beta');
-  var g = document.getElementById('gamma');
 
-  a.innerText = e.alpha;
-  b.innerText = e.beta;
-  g.innerText = e.gamma;
 }
 
 
 function deviceOrientationHandler(e){
 	
 	alert('oh');
-  var a = document.getElementById('alpha');
-  var b = document.getElementById('beta');
-  var g = document.getElementById('gamma');
 
-  a.innerText = e.alpha;
-  b.innerText = e.beta;
-  g.innerText = e.gamma;
 }
