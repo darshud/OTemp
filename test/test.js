@@ -54,10 +54,10 @@ function deviceMotionHandler(evnt){
 	var q = p.getTime();
 	g1.innerText = q;
 	
-	d.innerText = evnt.acceleration.x; + ' : ' + evnt.acceleration.y + ' : ' + evnt.acceleration.z;
-	e.innerText = evnt.accelerationIncludingGravity.x + ' : ' + evnt.accelerationIncludingGravity.y + ' : ' + evnt.accelerationIncludingGravity.z;
-	f.innerText = evnt.rotationRate.alpha + ' : ' + evnt.rotationRate.beta + ' : ' + evnt.rotationRate.gamma;
-	g.innerText = evnt.interval;
+	//d.innerText = evnt.acceleration.x; + ' : ' + evnt.acceleration.y + ' : ' + evnt.acceleration.z;
+	//e.innerText = evnt.accelerationIncludingGravity.x + ' : ' + evnt.accelerationIncludingGravity.y + ' : ' + evnt.accelerationIncludingGravity.z;
+	//f.innerText = evnt.rotationRate.alpha + ' : ' + evnt.rotationRate.beta + ' : ' + evnt.rotationRate.gamma;
+	//g.innerText = evnt.interval;
 }
 
 
