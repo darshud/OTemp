@@ -11,9 +11,9 @@ window.onload = function()
 
 	PlaySoundWav("start1");	//game start
 
-	var complexity = 4;
+	var complexity = 2;
 	var radioButtons = document.getElementsByName("complexity");
-	radioButtons[2].checked = true;
+	radioButtons[1].checked = true;
 
 	function PlaySoundWav(soundObj) 
 	{
