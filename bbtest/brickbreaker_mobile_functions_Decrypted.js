@@ -64,18 +64,3 @@
 			LKeyPressed=false;
 		}
 	}
-
-	function display_c(start, tstart) 
-	{
-		window.start = parseFloat(start);
-		var refresh = 0;
-		if(start == 0) 
-		{
-			mytime = window.setTimeout(display_ct,0,tstart);
-		}
-		else 
-		{
-			mytime = window.setTimeout(display_ct,refresh,tstart);
-		}
-	}
-
