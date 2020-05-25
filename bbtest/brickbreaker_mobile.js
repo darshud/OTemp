@@ -571,6 +571,7 @@ window.onload = function()
 	draw();
 }
 
+/*
 function permission() 
 {
 
@@ -603,3 +604,5 @@ function deviceOrientationHandler(e)
 {
 	v_gamma = e.gamma;		
 }
+
+*/
