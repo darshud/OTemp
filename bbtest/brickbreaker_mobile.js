@@ -172,6 +172,42 @@ window.onload = function()
 		alert(str0 + str1 + str2 + str3 + str4 + str5);
 	}
 
+	function fnSpeed(s)
+	{
+		if (s == "I") 
+		{ 
+			dy = dy*(((speed_increment-1) / 3)+1); dx = dx*(((speed_increment-1) / 3)+1); 
+		}
+		else 
+		{ 
+			dy = dy/speed_decrement; dx = dx/speed_decrement; 
+		}
+	}
+
+	function keyDownHandler(e)
+	{
+		if(e.keyCode==39)
+		{
+			RKeyPressed=true;
+		}
+		else if(e.keyCode==37)
+		{
+			LKeyPressed=true;
+		}
+	}
+
+	function keyUpHandler(e)
+	{
+		if(e.keyCode==39)
+		{
+			RKeyPressed=false;
+		}
+		else if(e.keyCode==37)
+		{
+			LKeyPressed=false;
+		}
+	}
+
 	function display_c(start, tstart) 
 	{
 		window.start = parseFloat(start);
@@ -220,18 +256,6 @@ window.onload = function()
 		}
 	}
 
-	function fnSpeed(s)
-	{
-		if (s == "I") 
-		{ 
-			dy = dy*(((speed_increment-1) / 3)+1); dx = dx*(((speed_increment-1) / 3)+1); 
-		}
-		else 
-		{ 
-			dy = dy/speed_decrement; dx = dx/speed_decrement; 
-		}
-	}
-
 	function drawBricks()
 	{
 		for(let c=0;c<brickColCnt;c++)
@@ -267,30 +291,6 @@ window.onload = function()
 		}
 	}
 
-	function keyDownHandler(e)
-	{
-		if(e.keyCode==39)
-		{
-			RKeyPressed=true;
-		}
-		else if(e.keyCode==37)
-		{
-			LKeyPressed=true;
-		}
-	}
-
-	function keyUpHandler(e)
-	{
-		if(e.keyCode==39)
-		{
-			RKeyPressed=false;
-		}
-		else if(e.keyCode==37)
-		{
-			LKeyPressed=false;
-		}
-	}
-
 	function drawBall()
 	{
 		ctx.beginPath();
@@ -307,57 +307,6 @@ window.onload = function()
 		ctx.fillStyle="#0095DD";
 		ctx.fill();
 		ctx.closePath();
-	}
-
-	function collisonDetection()
-	{
-		for(var c=0;c<brickColCnt;c++)
-		{
-			for(var r=0;r<brickRCnt;r++)
-			{
-				var b=bricks[c][r];
-				if(b.status==1)
-				{
-					if(x>b.x && x< b.x+brickW && y>b.y && y< b.y+brickH )
-					{
-						PlaySoundWav("brick1");	//hitting a brick
-						dy=-dy;
-						b.status=0;
-						var chosenbrick = bricks[c][r];
-						if (chosenbrick.special1 == "+ Life ") 
-						{ 
-							lives++; 
-							//PlaySoundMp3("lifeMore1"); 
-							fnSpeed("D"); 
-						}
-
-						if (chosenbrick.special1 == "- Life ") 
-						{ 
-							lives--; 
-							fnSpeed("I"); 
-						}
-
-						if (chosenbrick.special1 == "+ Speed") 
-						{ 
-							fnSpeed("I"); 
-						}
-
-						if (chosenbrick.special1 == "- Speed") 
-						{ 
-							fnSpeed("D") 
-						}
-
-						score+=chosenbrick.special2;
-						if(totalPossibleScore==score)
-						{
-							//PlaySoundWav("win1");	//winning
-							window.setTimeout(function(){fnAlert("YOU WIN!"); document.location.reload();},300);
-						}
-
-					}
-				}
-			}
-		}
 	}
 
 	function drawHeading()
