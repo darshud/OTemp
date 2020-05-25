@@ -555,6 +555,10 @@ window.onload = function()
 
 		ballSize=30/complexity;
 		paddleW=250/complexity;
+		if (paddleW < 83)
+		{
+			PaddleW = 83;
+		}
 
 		setInterval(draw,1);
 	}
