@@ -515,8 +515,6 @@ window.onload = function()
 		start_flag = false;
 	}
 
-	draw();
-	
 	document.getElementById("start").onclick = function()
 	{
 		permission();
@@ -546,6 +544,8 @@ window.onload = function()
 		setInterval(draw,1);
 	}
 
+	alert(1);
+	draw();
 }
 
 function permission() 
