@@ -1,6 +1,44 @@
 var v_gamma;
 var v_permitted;
 
+	var pausedFlag = false;
+	var pausedTime = 0;
+	var x=canvas.width/2;
+	var y=canvas.height-30;
+	var dx;
+	dx = 1;
+	var dy;
+	dy = -1;
+	var direction = 1;
+	var elapsed_Mins = 0;
+	var elapsed_Secs = 0;
+	var elapsed_MSecs = 0;
+	var ballSize=30/complexity;
+	var paddleH=10;
+	var paddleW=210/complexity;
+	var paddleX=(canvas.width-paddleW)/2;
+	var RKeyPressed=false;
+	var LKeyPressed=false;
+	var brickRCnt=5;
+	var brickColCnt=7;
+	var brickW=120;
+	var brickH=30;
+	var brickPadding=10;
+	var brickOffSetTop=5;
+	var brickOffSetLeft=30;
+	var score=0;
+	var lives=5;
+	var speed=0;
+	var speed_increment=1.2;
+	var speed_decrement=1.2;
+	var colors = ["#C1CAE8", "#FDBC08", "#8BFF06", "#EDFD08", "#08FDED", "#FD08D4"];
+	var scores = [1,2,3,4,5,6];
+	var special = ["+ Speed", "- Speed", "+ Life ", "- Life "]
+	var rComplexity = ["Begin", "Easy", "Medium", "Hard"]
+	var totalPossibleScore = 0;
+	var minusLifeCount = 0;
+	var bricks=[];
+
 window.onload = function()
 {
 
@@ -50,43 +88,41 @@ window.onload = function()
 		pausedFlag = false;
 	}
 
-	var pausedFlag = false;
-	var pausedTime = 0;
-	var x=canvas.width/2;
-	var y=canvas.height-30;
-	var dx;
-	dx = 1;
-	var dy;
-	dy = -1;
-	var direction = 1;
-	var elapsed_Mins = 0;
-	var elapsed_Secs = 0;
-	var elapsed_MSecs = 0;
-	var ballSize=30/complexity;
-	var paddleH=10;
-	var paddleW=210/complexity;
-	var paddleX=(canvas.width-paddleW)/2;
-	var RKeyPressed=false;
-	var LKeyPressed=false;
-	var brickRCnt=5;
-	var brickColCnt=7;
-	var brickW=120;
-	var brickH=30;
-	var brickPadding=10;
-	var brickOffSetTop=5;
-	var brickOffSetLeft=30;
-	var score=0;
-	var lives=5;
-	var speed=0;
-	var speed_increment=1.2;
-	var speed_decrement=1.2;
-	var colors = ["#C1CAE8", "#FDBC08", "#8BFF06", "#EDFD08", "#08FDED", "#FD08D4"];
-	var scores = [1,2,3,4,5,6];
-	var special = ["+ Speed", "- Speed", "+ Life ", "- Life "]
-	var rComplexity = ["Begin", "Easy", "Medium", "Hard"]
-	var totalPossibleScore = 0;
-	var minusLifeCount = 0;
-	var bricks=[];
+	 pausedFlag = false;
+	 pausedTime = 0;
+	 x=canvas.width/2;
+	 y=canvas.height-30;
+	 dx = 1;
+	 dy = -1;
+	 direction = 1;
+	 elapsed_Mins = 0;
+	 elapsed_Secs = 0;
+	 elapsed_MSecs = 0;
+	 ballSize=30/complexity;
+	 paddleH=10;
+	 paddleW=210/complexity;
+	 paddleX=(canvas.width-paddleW)/2;
+	 RKeyPressed=false;
+	 LKeyPressed=false;
+	 brickRCnt=5;
+	 brickColCnt=7;
+	 brickW=120;
+	 brickH=30;
+	 brickPadding=10;
+	 brickOffSetTop=5;
+	 brickOffSetLeft=30;
+	 score=0;
+	 lives=5;
+	 speed=0;
+	 speed_increment=1.2;
+	 speed_decrement=1.2;
+	 colors = ["#C1CAE8", "#FDBC08", "#8BFF06", "#EDFD08", "#08FDED", "#FD08D4"];
+	 scores = [1,2,3,4,5,6];
+	 special = ["+ Speed", "- Speed", "+ Life ", "- Life "]
+	 rComplexity = ["Begin", "Easy", "Medium", "Hard"]
+	 totalPossibleScore = 0;
+	 minusLifeCount = 0;
+	 bricks=[];
 
 	for(let c=0;c<brickColCnt;c++)
 	{
