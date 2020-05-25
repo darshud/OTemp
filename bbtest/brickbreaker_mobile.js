@@ -554,6 +554,11 @@ window.onload = function()
 		}
 
 		ballSize=30/complexity;
+		if (ballSize < 10)
+		{
+			ballSize = 10;
+		}
+		
 		paddleW=250/complexity;
 		if (paddleW < 83)
 		{
