@@ -37,6 +37,18 @@ var v_permitted;
 	var minusLifeCount;
 	var bricks;
 
+	function PlaySoundWav(soundObj) 
+	{
+		  var audio = new Audio(soundObj + '.wav');
+		  audio.play();
+	}
+
+	function PlaySoundMp3(soundObj) 
+	{
+		  var audio = new Audio(soundObj + '.mp3');
+		  audio.play();
+	}
+
 window.onload = function()
 {
 
@@ -50,18 +62,6 @@ window.onload = function()
 	var complexity = 2;
 	var radioButtons = document.getElementsByName("complexity");
 	radioButtons[1].checked = true;
-
-	function PlaySoundWav(soundObj) 
-	{
-		  var audio = new Audio(soundObj + '.wav');
-		  audio.play();
-	}
-
-	function PlaySoundMp3(soundObj) 
-	{
-		  var audio = new Audio(soundObj + '.mp3');
-		  audio.play();
-	}
 
 	var canvas=document.getElementById("BBcanvas");		//Main
 	var ctx=canvas.getContext("2d");
