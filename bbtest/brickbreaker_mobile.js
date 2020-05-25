@@ -36,6 +36,8 @@ var v_permitted;
 	var totalPossibleScore;
 	var minusLifeCount;
 	var bricks;
+	var radioButtons;
+	var complexity;
 
 	function PlaySoundWav(soundObj) 
 	{
@@ -59,8 +61,8 @@ window.onload = function()
 
 	//PlaySoundWav("start1");	//game start
 
-	var complexity = 2;
-	var radioButtons = document.getElementsByName("complexity");
+	complexity = 2;
+	radioButtons = document.getElementsByName("complexity");
 	radioButtons[1].checked = true;
 
 	var canvas=document.getElementById("BBcanvas");		//Main
