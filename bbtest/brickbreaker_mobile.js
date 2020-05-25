@@ -202,6 +202,15 @@ window.onload = function()
 		}
 	}
 
+	function mouseMoveHandler(e)
+	{
+		var relativeX = e.clientX-canvas.offsetLeft;
+		if(relativeX>0+paddleW/2 && relativeX < canvas.width-paddleW/2)
+		{
+			paddleX= relativeX-paddleW/2;
+		}
+	}
+	
 	function drawBricks()
 	{
 		for(let c=0;c<brickColCnt;c++)
