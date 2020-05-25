@@ -25,6 +25,7 @@ ul {
 
 .complexity{
   	font-family: "Roboto", monospace;
+	font-size: 20px;
 	width: 35px;
 	justify-content: center;
 }
