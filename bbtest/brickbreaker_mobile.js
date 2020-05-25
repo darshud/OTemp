@@ -15,12 +15,14 @@ window.onload = function()
 	var radioButtons = document.getElementsByName("complexity");
 	radioButtons[2].checked = true;
 
-	function PlaySoundWav(soundObj) {
+	function PlaySoundWav(soundObj) 
+	{
 		  var audio = new Audio(soundObj + '.wav');
 		//  audio.play();
 	}
 
-	function PlaySoundMp3(soundObj) {
+	function PlaySoundMp3(soundObj) 
+	{
 		  var audio = new Audio(soundObj + '.mp3');
 		//  audio.play();
 	}
@@ -38,7 +40,8 @@ window.onload = function()
 	var ctx4=canvas4.getContext("2d");
 	
 	document.getElementById("pause").style.display = "inline";
-	document.getElementById("pause").onclick = function(){
+	document.getElementById("pause").onclick = function()
+	{
 		pausedFlag = true;
 		var beforePause = new Date().getTime();
 		fnAlert("GAME PAUSED!");
@@ -98,11 +101,14 @@ window.onload = function()
 
 	for(let i = 0; i < 6; i++)
 	{
-		do{
+		do
+		{
 			var chosenbrick = bricks[getRandomInt(brickColCnt)][getRandomInt(brickRCnt)];
-		}while(chosenbrick.special1 != "");
+		}
+		while(chosenbrick.special1 != "");
 
 		chosenbrick.special1 = special[getRandomInt(4)];
+		
 		if(chosenbrick.special1 == special[3] && minusLifeCount < 2)
 		{
 			minusLifeCount++;
@@ -510,6 +516,7 @@ window.onload = function()
 	}
 
 	draw();
+	
 	document.getElementById("start").onclick = function()
 	{
 		permission();
@@ -522,23 +529,22 @@ window.onload = function()
 		var tstart = new Date().getTime();
 		display_c(0,tstart);
 
-	for(let i = 0; i < radioButtons.length; i++)
-	{
-		if(radioButtons[i].checked == true)
+		for(let i = 0; i < radioButtons.length; i++)
 		{
-			complexity = radioButtons[i].value;
-			speed_increment = speed_increment + (0.01 * complexity);
-			speed_decrement = speed_decrement - (0.01 * complexity);
+			if(radioButtons[i].checked == true)
+			{
+				complexity = radioButtons[i].value;
+				speed_increment = speed_increment + (0.01 * complexity);
+				speed_decrement = speed_decrement - (0.01 * complexity);
+			}
+			radioButtons[i].disabled = true;
 		}
-		radioButtons[i].disabled = true;
+
+		ballSize=30/complexity;
+		paddleW=250/complexity;
+
+		setInterval(draw,1);
 	}
-
-	ballSize=30/complexity;
-	paddleW=250/complexity;
-
-	setInterval(draw,1);
-
-}
 
 }
 
