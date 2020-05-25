@@ -570,39 +570,3 @@ window.onload = function()
 
 	draw();
 }
-
-/*
-function permission() 
-{
-
-	if ( location.protocol != "https:" ) 
-	{
-		location.href = "https:" + window.location.href.substring( window.location.protocol.length );
-	}
-
-	if (typeof DeviceOrientationEvent.requestPermission === 'function') 
-	{
-		DeviceOrientationEvent.requestPermission()
-		.then( function(permissionState) 
-		{
-			  if (permissionState === 'granted') 
-			  {
-				  v_permitted = true;
-				  window.addEventListener('deviceorientation', deviceOrientationHandler, false);
-			  }
-		})
-		.catch(console.error);
-	}
-	else 
-	{
-		v_permitted = true;
-		window.addEventListener('deviceorientation', deviceOrientationHandler, false);
-	}
-}
-
-function deviceOrientationHandler(e)
-{
-	v_gamma = e.gamma;		
-}
-
-*/
