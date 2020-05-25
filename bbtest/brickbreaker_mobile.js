@@ -9,7 +9,7 @@ window.onload = function()
 
 	var start_flag = true;
 
-	PlaySoundWav("start1");	//game start
+	//PlaySoundWav("start1");	//game start
 
 	var complexity = 2;
 	var radioButtons = document.getElementsByName("complexity");
@@ -18,13 +18,13 @@ window.onload = function()
 	function PlaySoundWav(soundObj) 
 	{
 		  var audio = new Audio(soundObj + '.wav');
-		//  audio.play();
+		  audio.play();
 	}
 
 	function PlaySoundMp3(soundObj) 
 	{
 		  var audio = new Audio(soundObj + '.mp3');
-		//  audio.play();
+		  audio.play();
 	}
 
 	var canvas=document.getElementById("BBcanvas");		//Main
@@ -83,7 +83,7 @@ window.onload = function()
 	var colors = ["#C1CAE8", "#FDBC08", "#8BFF06", "#EDFD08", "#08FDED", "#FD08D4"];
 	var scores = [1,2,3,4,5,6];
 	var special = ["+ Speed", "- Speed", "+ Life ", "- Life "]
-	var rComplexity = ["Baby", "Easy", "Medium", "Hard", "Pro"]
+	var rComplexity = ["Begin", "Easy", "Medium", "Hard"]
 	var totalPossibleScore = 0;
 	var minusLifeCount = 0;
 	var bricks=[];
@@ -324,18 +324,33 @@ window.onload = function()
 						dy=-dy;
 						b.status=0;
 						var chosenbrick = bricks[c][r];
-						if (chosenbrick.special1 == "+ Life ") { lives++; PlaySoundMp3("lifeMore1"); fnSpeed("D"); }
+						if (chosenbrick.special1 == "+ Life ") 
+						{ 
+							lives++; 
+							//PlaySoundMp3("lifeMore1"); 
+							fnSpeed("D"); 
+						}
 
-						if (chosenbrick.special1 == "- Life ") { lives--; fnSpeed("I"); }
+						if (chosenbrick.special1 == "- Life ") 
+						{ 
+							lives--; 
+							fnSpeed("I"); 
+						}
 
-						if (chosenbrick.special1 == "+ Speed") { fnSpeed("I"); }
+						if (chosenbrick.special1 == "+ Speed") 
+						{ 
+							fnSpeed("I"); 
+						}
 
-						if (chosenbrick.special1 == "- Speed") { fnSpeed("D") }
+						if (chosenbrick.special1 == "- Speed") 
+						{ 
+							fnSpeed("D") 
+						}
 
 						score+=chosenbrick.special2;
 						if(totalPossibleScore==score)
 						{
-							PlaySoundWav("win1");	//winning
+							//PlaySoundWav("win1");	//winning
 							window.setTimeout(function(){fnAlert("YOU WIN!"); document.location.reload();},300);
 						}
 
@@ -456,11 +471,11 @@ window.onload = function()
 			}
 			else
 			{
-				PlaySoundWav("lifeLess1");	//losing life
+				//PlaySoundWav("lifeLess1");	//losing life
 				lives=lives-1;
 				if(lives == 0)    
 				{
-					PlaySoundMp3("lose1");	//game over
+					//PlaySoundMp3("lose1");	//game over
 					lives = -1;	//game over
 					window.setTimeout(function(){fnAlert("GAME OVER!"); document.location.reload();},300);
 				}
@@ -507,7 +522,7 @@ window.onload = function()
 		{ 
 			if ((!start_flag) && (lives > 0)) 
 			{
-				PlaySoundMp3("speed1");	//speed increase
+				//PlaySoundMp3("speed1");	//speed increase
 			}
 		}
 		speed = temp_speed; 	
@@ -544,7 +559,6 @@ window.onload = function()
 		setInterval(draw,1);
 	}
 
-	alert(1);
 	draw();
 }
 
